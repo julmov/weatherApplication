@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 1400px;
+  background: rgb(226, 250, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(226, 250, 255, 1) 0%,
+    rgba(94, 132, 214, 0.42) 100%
+  );
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+#myChart {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#containerCanvas {
+  background: rgb(226, 250, 255);
+  background: linear-gradient(
+    0deg,
+    rgb(208, 233, 241) 0%,
+    rgba(94, 132, 214, 0.726) 100%
+  );
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+
+/* Form styles */
+.weatherForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+#cityInput {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+
+#submitBtn {
+  margin: 20px;
+  height: 40px;
+  width: 120px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  background-color: #222c4cc0;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#submitBtn:hover {
+  background-color: #2980b9;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: flex-start;
+  background: rgb(226, 250, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(226, 250, 255, 1) 0%,
+    rgba(94, 132, 214, 0.42) 100%
+  );
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add box shadow */
+  color: #1b1b1b;
+}
+.card p {
+  padding: 5px;
+  font-size: 12px;
+}
+
+.weatherEmoji {
+  font-size: 18px;
+}
+
+
+.weatherDisplay img {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.errorDisplay {
+  color: #050404;
+  font-weight: bold;
+  margin-left: 500px;
+}
+.city-photo {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 350px; /* Adjust the height as needed */
+}
+#cityBigCard {
+  margin-top: 30px;
+  font-size: 36px;
+}
+.city-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  height: 420px;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: rgb(226, 250, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(226, 250, 255, 1) 0%,
+    rgba(94, 132, 214, 0.42) 100%
+  );
+}
+
+.city-container img {
+  margin: 30px;
+  border-radius: 15px;
+}
+#bigEmoji{
+  height: 34px;
+  font-size: 34px;
+}
+
+.city-container p {
+  margin: 10px;
+  font-size: 30px;
+}
+
+#tempDisplay{
+font-size: 17px;
+font-weight: 450;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    width: auto;
+    height: 100%;
+    background: none;
+    background-color: #fff;
+  }
+  .container {
+    width: 100%;
+  }
+  #cityInput {
+    width: calc(100% - 20px);
+  }
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+  .weatherForm {
+    width: 100%;
+  }
+
+  .city-photo {
+    display: flex;
+
+    padding: 10px;
+    margin: 10px;
+    padding-right: 10px;
+    width: 100%;
+    height: auto; /* Adjust the height as needed */
+  }
+  .city-container {
+    width: 90%;
+    height: 200px;
+    margin-bottom: 10px;
+
+  }
+  .city-container p {
+    display: none;
+  }
+  .city-container img {
+    margin: 0;
+  }
+  #containerCanvas {
+    width: 90% !important;
+    padding: 20px;
+    margin: 20px;
+    height: 250px !important;
+  }
+  #myChart {
+    width: 100%;
+    height: 200px !important;
+    margin: 0;
+  }
+}
