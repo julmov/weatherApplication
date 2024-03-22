@@ -26,6 +26,7 @@ document.body.appendChild(cardsContainer);
 
 const containerCanvas = document.createElement("div");
 containerCanvas.id = "containerCanvas";
+containerCanvas.style.display = "none";
 document.body.appendChild(containerCanvas);
 
 submitBtn.addEventListener("click", async function () {
