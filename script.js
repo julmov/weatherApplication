@@ -85,37 +85,54 @@ const createCard = (forecast, index, city) => {
   const day = date.getDate();
   const month = date.toLocaleString("default", { month: "long" });
 
+  const infoContainer = document.createElement("div");
+  infoContainer.classList.add("infoContainer");
+
   const cityNameDisplay = document.createElement("p");
   cityNameDisplay.textContent = `City: ${city}`;
   cityNameDisplay.id = "cityNameDisplay";
-  card.appendChild(cityNameDisplay);
+  infoContainer.appendChild(cityNameDisplay);
 
   const dateDisplay = document.createElement("p");
   dateDisplay.textContent = `${month} ${day}`;
-  card.appendChild(dateDisplay);
+  infoContainer.appendChild(dateDisplay);
 
-  const tempCelsius = Math.round(temp - 273.15); // Convert temperature to Celsius and round to nearest whole number
+  const tempCelsius = Math.round(temp - 273.15);
   const tempDisplay = document.createElement("p");
   tempDisplay.id = "tempDisplay";
-  tempDisplay.textContent = `Temperature: ${tempCelsius}°C`; // Display temperature in Celsius as an integer
-  card.appendChild(tempDisplay);
+  tempDisplay.textContent = `Temperature: ${tempCelsius}°C`;
+  infoContainer.appendChild(tempDisplay);
 
   const humidityDisplay = document.createElement("p");
   humidityDisplay.textContent = `Humidity: ${humidity}%`;
-  card.appendChild(humidityDisplay);
+  infoContainer.appendChild(humidityDisplay);
 
   const descDisplay = document.createElement("p");
-  descDisplay.textContent = `Weather: ${description}`;
-  card.appendChild(descDisplay);
+  descDisplay.id = "descDisplay";
+  descDisplay.textContent = `${description}`;
+  infoContainer.appendChild(descDisplay);
 
-  const weatherEmoji = document.createElement("p");
-  weatherEmoji.classList.add("weatherEmoji");
-  weatherEmoji.style.fontSize = "28px";
-  weatherEmoji.textContent = getWeatherEmoji(description); // Pass description to getWeatherEmoji function
-  card.appendChild(weatherEmoji);
+   const weatherEmoji = document.createElement("p");
+   weatherEmoji.classList.add("weatherEmoji");
+   weatherEmoji.style.fontSize = "28px";
+   weatherEmoji.textContent = getWeatherEmoji(description);
+   infoContainer.appendChild(weatherEmoji);
+
+  const infoEmojiContainer = document.createElement("div");
+  infoEmojiContainer.classList.add("info-emoji-container");
+
+  const mobileEmoji = document.createElement("p");
+  mobileEmoji.id = "mobileEmoji";
+  mobileEmoji.style.display = "none";
+  mobileEmoji.textContent = getWeatherEmoji(description);
+  infoEmojiContainer.appendChild(mobileEmoji);
+
+  card.appendChild(infoContainer);
+  card.appendChild(infoEmojiContainer);
 
   return card;
 };
+
 
 const displayWeatherInfo = (weatherData) => {
   const city = weatherData.city.name; // Get the city name from the weather data

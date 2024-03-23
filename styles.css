@@ -187,7 +187,7 @@ font-weight: 450;
     width: 100%;
   }
   #cityInput {
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
   }
   .cards-container {
     display: flex;
@@ -234,4 +234,38 @@ font-weight: 450;
     height: 200px !important;
     margin: 0;
   }
+.weatherEmoji{
+    display: none;
+}
+#mobileEmoji{
+    display: block !important;
+    font-size: 69px;
+    margin-top: 20px;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+#tempDisplay{
+font-size: 15px;
+font-weight: 220;
+}
+
+#bigEmoji{
+
+  font-size: 50px !important;
+}
+
+
+#tempDisplay{
+font-size: 15px;
+font-weight: 450;
+}
+
+
 }
