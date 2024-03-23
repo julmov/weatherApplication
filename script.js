@@ -135,7 +135,13 @@ async function displayCityPhoto(cityName) {
       `https://api.unsplash.com/search/photos?page=1&query=${cityName}&client_id=6Zhb8bS8u-t064Jq4aCc7TcIaNYrpi3-pZtG1QywCPA`
     );
     const unsplashData = await unsplashResponse.json();
-    const photoUrl = unsplashData.results[0].urls.regular;
+    let photoUrl = "";
+    if (unsplashData.results.length > 0) {
+      photoUrl = unsplashData.results[0].urls.regular;
+    } else {
+      // Use default photo if no photo is fetched
+      throw new Error("No photo fetched");
+    }
 
     // Check if cityContainer already exists
     let cityContainer = document.querySelector(".city-container");
@@ -146,10 +152,6 @@ async function displayCityPhoto(cityName) {
     cityPhoto.alt = `Photo of ${cityName}`;
     cityPhoto.classList.add("city-photo");
 
-    /*
-        document.body.style.backgroundImage = `url(${photoUrl})`;
-         document.body.style.backgroundSize = "cover";
-         document.body.style.backgroundPosition = "center";*/
     // Create a div for weather info
     const weatherInfo = document.createElement("div");
     weatherInfo.classList.add("weather-info");
@@ -163,8 +165,27 @@ async function displayCityPhoto(cityName) {
     displayCityWeatherInfo(weatherData, weatherInfo);
   } catch (error) {
     console.error("Error fetching city photo:", error);
+   cityContainer.innerHTML = "";
+    const defaultPhoto = "images/Neckertal_20150527-6384.jpg";
+    const cityPhoto = document.createElement("img");
+    cityPhoto.src = defaultPhoto;
+    cityPhoto.alt = `Photo of ${cityName}`;
+    cityPhoto.classList.add("city-photo");
+
+    // Create a div for weather info
+    const weatherInfo = document.createElement("div");
+    weatherInfo.classList.add("weather-info");
+
+    // Append weather info to the container
+    cityContainer.appendChild(cityPhoto);
+    cityContainer.appendChild(weatherInfo);
+
+    // Fetch weather data and display
+    const weatherData = await getWeatherData(cityName);
+    displayCityWeatherInfo(weatherData, weatherInfo);
   }
 }
+
 
 function displayCityWeatherInfo(weatherData, weatherInfoContainer) {
   weatherInfoContainer.innerHTML = "";
@@ -245,6 +266,7 @@ const getWeatherEmoji = (description) => {
       imagePath = "url('images/beautiful-clouds.jpg')";
       break;
     case "shower rain":
+    case "light rain":
     case "rain":
       emoji = "🌧️";
       imagePath = "url('images/rain-316579_1280.jpg')";
